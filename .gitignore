@@ -1,0 +1,9 @@
+# Build output and release archives
+build/
+*.zip
+
+# Local signing certificate (see build.sh)
+.sign-identity
+
+.DS_Store
+__pycache__/

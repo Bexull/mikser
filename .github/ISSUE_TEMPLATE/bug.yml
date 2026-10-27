@@ -1,0 +1,43 @@
+name: Ошибка
+description: Что-то работает не так
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: Что случилось
+      description: Что делали, что ожидали и что получилось
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Как повторить
+      placeholder: |
+        1. Открыть панель
+        2. …
+  - type: input
+    id: macos
+    attributes:
+      label: Версия macOS
+      placeholder: macOS 26.1
+    validations:
+      required: true
+  - type: input
+    id: mac
+    attributes:
+      label: Мак и устройство вывода звука
+      placeholder: MacBook Air M3, AirPods Pro
+  - type: input
+    id: version
+    attributes:
+      label: Версия Микшера
+      placeholder: "1.0"
+  - type: textarea
+    id: state
+    attributes:
+      label: Состояние движка
+      description: |
+        Если ошибка со звуком или клавиатурой: выполните в Терминале
+        `pkill -USR1 -f Микшер.app/Contents/MacOS/Mixer` и приложите
+        `~/Library/Logs/Mixer/state.txt`. Там есть названия открытых программ: уберите лишнее.
+      render: text

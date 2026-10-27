@@ -1,0 +1,28 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  autocorrect:
+    name: Автозамена
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Собрать тесты
+        run: |
+          mkdir -p build
+          xcrun swiftc -O -o build/test-typing Tools/TypingTests/main.swift \
+            Sources/KazakhTyping.swift Sources/KazakhWords.swift Sources/KazakhLexicon.swift
+
+      - name: Чатовые фразы и русский текст
+        run: build/test-typing Resources/kazakh Tools/TypingTests/chat-phrases.tsv Tools/TypingTests/russian-phrases.tsv
+
+      - name: Фразы, на которых правила не настраивались
+        run: build/test-typing Resources/kazakh Tools/TypingTests/holdout-kazakh.tsv Tools/TypingTests/holdout-russian.tsv
+
+      - name: Разговорные формы
+        run: build/test-typing Resources/kazakh Tools/TypingTests/colloquial.tsv /dev/null

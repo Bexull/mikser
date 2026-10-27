@@ -1,0 +1,50 @@
+name: Неправильная автозамена
+description: Слово исправилось неправильно или не исправилось
+title: "Автозамена: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Спасибо! Каждый такой пример делает автозамену точнее.
+  - type: input
+    id: typed
+    attributes:
+      label: Что набрали
+      description: Фраза целиком, как набирали, без казахских букв
+      placeholder: салеметсизбе
+    validations:
+      required: true
+  - type: input
+    id: got
+    attributes:
+      label: Что получилось
+      placeholder: салеметсизбе
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: Как должно быть
+      placeholder: сәлеметсіз бе
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Язык фразы
+      options:
+        - Казахский
+        - Русский
+        - Смешанный
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: Программа
+      placeholder: Telegram, Заметки, Chrome…
+  - type: textarea
+    id: notes
+    attributes:
+      label: Что ещё важно
+      description: Например, слово разговорное, диалектное или это имя
